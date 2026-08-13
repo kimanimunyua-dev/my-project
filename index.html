@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -22,6 +22,7 @@ body {
 .mycontainer {
     margin-top: 100px;
   display: flex;
+  background-color: aliceblue;
 }
 .mycontainer > div {
   width: 1400px;
@@ -42,10 +43,9 @@ body {
   </head>
   <body>
     <div class="mycontainer">
-      <!-- <div class="text"> -->
+
     <header>
       <h1>Project title: update this</h1>
-      <hr>
       <p class="problem-statement" >Across high-density Nairobi estates (such as Eastlands, Kibera, Mathare, Mukuru, and Kasarani), secondary day-school students (Forms 1–4, ages 13–18)<br>
      commuting on foot encounter pervasive illegal open dumpsites, unmanaged plastic litter, and waste-clogged drainage culverts along their daily pedestrian routes (<br>
       ResearchGate, 2025). Because municipal waste management systems leave over 1,300 tons of solid waste uncollected daily (~500 tons of which is plastic) and existing<br>
@@ -59,16 +59,176 @@ body {
     <main>
       <section id="evidence">
         <h2>Why this matters</h2>
-        <!-- Source: UNEP & NEMA Solid Waste Strategy 2021 -->
-        <p>Nairobi generates over 2,400 tons of solid waste daily, leaving more than 1,300 tons uncollected in illegal dumpsites and waterways.</p>
+Source: UNEP & NEMA Solid Waste Strategy 2021 -->
+        <!-- <p>Nairobi generates over 2,400 tons of solid waste daily, leaving more than 1,300 tons uncollected in illegal dumpsites and waterways.</p>
       </section>
       <section id="feature">
         <h2>The tool</h2>
         <p>Your feature goes here. You will build this on Day 4.</p>
       </section>
+
     </main>
-    <img src="il.png">
-  <!-- </div> -->
+    <img src="il1.png">
+
   </div>
+      <iframe style="height: 300px; width: 300px;"src=""></iframe>
   </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Climate Action Tool</title>
+    <style>
+        /* Base page styling with outer light blue background */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #cddcf7;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Central white content block */
+        .main-content {
+            background-color: #ffffff;
+            margin: 40px 0;
+            padding: 30px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Top Navigation Bar */
+        .topBar {
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .topBar a {
+            color: #a4bded;
+            text-decoration: none;
+            margin: 0 6px;
+        }
+
+        /* 2-Column Main Flex Layout */
+        .mycontainer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Left Side: Text Section */
+        .txt {
+            flex: 1;
+            min-width: 320px;
+            max-width: 550px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .txt h1 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #000000;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .txt p {
+            font-size: 13px;
+            color: #333333;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* Pill Call-to-Action Button */
+        .btn {
+            display: inline-block;
+            background-color: #d3e2f7;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #b8cbee;
+        }
+
+        /* Right Side: Image Section */
+        .image-container {
+            flex: 1;
+            min-width: 320px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            max-height: 420px;
+        }
+
+        /* Bottom Footer Bar */
+        .bottomBar {
+            text-align: center;
+            color: #a4bded;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content">
+        <!-- Top Navigation -->
+        <div class="topBar">
+            <a href="#">Roundstudios</a> | 
+            <a href="#">Homepage</a> | 
+            <a href="#">Website</a> | 
+            <a href="#">About</a>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="mycontainer">
+            <!-- Left Text Box -->
+            <div class="txt">
+                <h1>My Climate Action Tool</h1>
+                <p>
+                    Across high-density Nairobi estates (such as Eastlands, Kibera, Mathare, Mukuru, and Kasarani), secondary day-school students commuting on foot encounter pervasive illegal open dumpsites and waste-clogged drainage culverts. Lacking actionable channels for waste recovery, residents routinely burn trash, exposing students to toxic PM2.5 particulates or dumping plastic waste directly into open storm drains, severely polluting pedestrian corridors and triggering flash flooding.
+                </p>
+                <a href="#" class="btn">Visit our model</a>
+            </div>
+
+            <!-- Right Image Container -->
+            <div class="image-container">
+                <img src="il1.png" alt="Climate Action Illustration">
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="bottomBar">
+            Copyright © 2026 <strong>CLIMATE ACTION TOOL</strong> All rights reserved by <strong>Roundstudios.</strong>
+        </div>
+    </div>
+
+</body>
 </html>
