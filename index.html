@@ -25,7 +25,7 @@
         <div class="mycontainer">
             <!-- Left Text Box -->
             <div class="txt">
-                <h1>Nairobi Waste Action</h1>
+                <h1>Project Title: Nairobi Waste Action</h1>
                 <p>
                     Across high-density Nairobi estates (such as Eastlands, Kibera, Mathare, Mukuru, and Kasarani), secondary day-school students commuting on foot encounter pervasive illegal open dumpsites and waste-clogged drainage culverts. Lacking actionable channels for waste recovery, residents routinely burn trash, exposing students to toxic PM2.5 particulates or dumping plastic waste directly into open storm drains, severely polluting pedestrian corridors and triggering flash flooding.
                 </p>
@@ -48,44 +48,44 @@
         </div>
     </div>
 
-    <!-- Modal Dialog - Interactive Collector Finder -->
-    <dialog id="collectorDialog" class="collector-dialog">
-        <div class="dialog-header">
-            <h2>Collector Finder</h2>
-            <button type="button" id="closeDialogBtn" class="close-dialog-btn">&times;</button>
-        </div>
-
-        <div class="dialog-body">
-            <!-- Interactive Leaflet Map -->
+    <!-- Modal Dialog Pop-up -->
+    <dialog id="collectorDialog" class="collector-modal">
+        <div class="card">
+            <div class="modal-header-row">
+                <h1>Interactive Map Location & Collector Finder</h1>
+                <button type="button" id="closeDialogBtn" class="modal-close-btn">&times;</button>
+            </div>
+            
+            <!-- Map Container -->
             <div id="map"></div>
 
-            <!-- Search Bar -->
+            <!-- Search Location Input Box -->
             <div class="field-group">
                 <label for="search-input">Search Location:</label>
                 <div class="search-box">
                     <input 
                         type="text" 
                         id="search-input" 
-                        placeholder="Enter location (e.g., Westlands, Kibera, Kasarani, Karen)..." 
+                        placeholder="Enter a location (e.g., Westlands, Kilimani, Lavington)..." 
                     />
                     <button id="search-btn" class="btn-search" type="button">Search</button>
                 </div>
             </div>
 
-            <!-- Selected Location Display -->
+            <!-- Selected Location Output Box -->
             <div class="field-group">
                 <label for="location-output">Selected Location Name:</label>
                 <input 
                     type="text" 
                     id="location-output" 
-                    placeholder="Click on the map or search to select location..." 
+                    placeholder="Click on the map or search to display location..." 
                     readonly 
                 />
             </div>
 
-            <!-- Dynamic Collector Results -->
+            <!-- Garbage Collection Services Container -->
             <div class="services-section">
-                <h3>Top 5 Closest Garbage Collection Services</h3>
+                <div class="services-title">Top 5 Closest Garbage Collection Services</div>
                 <div id="services-list" class="services-list">
                     <div class="empty-state">Click a location on the map or search above to view nearby garbage collection services.</div>
                 </div>

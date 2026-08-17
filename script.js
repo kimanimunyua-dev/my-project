@@ -1,4 +1,4 @@
-// Nairobi Waste Management Providers Dataset
+// Real Nairobi Waste Management Dataset
 const nairobiGarbageServices = [
     {
         name: "Bins Nairobi (K) Ltd",
@@ -66,25 +66,25 @@ const nairobiGarbageServices = [
     }
 ];
 
-// Leaflet Map Initialization
 let map;
 let activeMarker;
 
-// Green Pin Icon using #a2ffa1
+// Custom SVG Marker Icon in #a2ffa1
 const greenPinIcon = L.divIcon({
     className: 'custom-marker',
-    html: `<svg width="26" height="38" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 0C5.37 0 0 5.37 0 12C0 21 12 36 12 36C12 36 24 21 24 12C24 5.37 18.63 0 12 0Z" fill="#a2ffa1" stroke="#000000" stroke-width="2"/>
-            <circle cx="12" cy="12" r="4" fill="#000000"/>
+    html: `<svg width="28" height="40" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.37 0 0 5.37 0 12C0 21 12 36 12 36C12 36 24 21 24 12C24 5.37 18.63 0 12 0Z" fill="#a2ffa1" stroke="#121212" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4.5" fill="#121212"/>
            </svg>`,
-    iconSize: [26, 38],
-    iconAnchor: [13, 38]
+    iconSize: [28, 40],
+    iconAnchor: [14, 40]
 });
 
+// Initialize Leaflet Map
 function initMap() {
-    if (map) return; // Initialize once
+    if (map) return;
 
-    map = L.map('map').setView([-1.286389, 36.817223], 12);
+    map = L.map('map').setView([-1.286389, 36.817223], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -97,7 +97,7 @@ function initMap() {
     });
 }
 
-// Distance Calculation (Haversine)
+// Distance Calculation (Haversine formula)
 function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 6371;
     const dLat = (lat2 - lat1) * Math.PI / 180;
@@ -110,7 +110,6 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
     return R * c;
 }
 
-// Get 5 closest collectors
 function getNearbyGarbageServices(lat, lng) {
     const calculated = nairobiGarbageServices.map(service => {
         const dist = calculateDistance(lat, lng, service.lat, service.lng);
@@ -120,7 +119,6 @@ function getNearbyGarbageServices(lat, lng) {
     return calculated.sort((a, b) => a.distance - b.distance).slice(0, 5);
 }
 
-// Render collectors list
 function renderServicesList(services) {
     const container = document.getElementById('services-list');
     container.innerHTML = '';
@@ -149,7 +147,6 @@ function renderServicesList(services) {
     });
 }
 
-// Update location on map selection or search
 async function setLocation(lat, lng, displayName = null) {
     const outputBox = document.getElementById('location-output');
 
@@ -178,7 +175,6 @@ async function setLocation(lat, lng, displayName = null) {
     renderServicesList(nearestServices);
 }
 
-// Search location
 async function handleSearch() {
     const query = document.getElementById('search-input').value.trim();
     if (!query) return;
@@ -188,7 +184,7 @@ async function handleSearch() {
 
     try {
         const response = await fetch(
-            `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query + ', Nairobi')}`
+            `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`
         );
         const data = await response.json();
 
@@ -200,14 +196,14 @@ async function handleSearch() {
             map.setView([lat, lon], 14);
             setLocation(lat, lon, firstResult.display_name);
         } else {
-            outputBox.value = "Location not found. Please try another query.";
+            outputBox.value = "Location not found. Please try a different query.";
         }
     } catch {
         outputBox.value = "Error searching location. Please try again.";
     }
 }
 
-// Modal Trigger Logic
+// Modal Pop-Up Logic
 const toolLink = document.getElementById('toolLink');
 const collectorDialog = document.getElementById('collectorDialog');
 const closeDialogBtn = document.getElementById('closeDialogBtn');
@@ -216,12 +212,14 @@ if (toolLink && collectorDialog) {
     toolLink.addEventListener('click', (e) => {
         e.preventDefault();
         collectorDialog.showModal();
-        
-        // Initialize map & invalidate size so tiles render cleanly inside dialog
+
+        // Initialize map & force recalculation of dimensions once modal opens
+        initMap();
         setTimeout(() => {
-            initMap();
-            map.invalidateSize();
-        }, 100);
+            if (map) {
+                map.invalidateSize();
+            }
+        }, 150);
     });
 }
 
@@ -232,6 +230,6 @@ if (closeDialogBtn && collectorDialog) {
 }
 
 document.getElementById('search-btn').addEventListener('click', handleSearch);
-document.getElementById('search-input').addEventListener('keypress', (e) => {
+document.getElementById('search-input').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') handleSearch();
 });
