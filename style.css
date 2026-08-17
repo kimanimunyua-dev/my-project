@@ -110,3 +110,55 @@
             font-size: 13px;
             margin-top: 20px;
         }
+        /* Dialog / Modal Styling */
+.collector-dialog {
+    border: none;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.collector-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.zone-map {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.zone-btn {
+    background-color: #f0f4f8;
+    border: 1px solid #d3e2f7;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.zone-btn:hover {
+    background-color: #d3e2f7;
+}
+
+.dialog-search {
+    margin: 15px 0;
+    display: flex;
+    gap: 8px;
+}
+
+#collectorResults {
+    margin: 15px 0;
+    font-weight: bold;
+    color: #2b6cb0;
+}
+
+.close-dialog-btn {
+    background-color: #e2e8f0;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}

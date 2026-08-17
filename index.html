@@ -11,7 +11,6 @@
     <div class="main-content">
         <!-- Top Navigation -->
         <div class="topBar">
-        <!--Not functional (yet) just for aesthetic-->    
             <a href="#">Roundstudios</a> | 
             <a href="#">Homepage</a> | 
             <a href="#" id="toolLink">Tool</a> | 
@@ -23,36 +22,39 @@
         <div class="mycontainer">
             <!-- Left Text Box -->
             <div class="txt">
-                <h1>Project Title:update this</h1>
+                <h1>Project Title: Nairobi Waste Action</h1>
                 <p>
                     Across high-density Nairobi estates (such as Eastlands, Kibera, Mathare, Mukuru, and Kasarani), secondary day-school students commuting on foot encounter pervasive illegal open dumpsites and waste-clogged drainage culverts. Lacking actionable channels for waste recovery, residents routinely burn trash, exposing students to toxic PM2.5 particulates or dumping plastic waste directly into open storm drains, severely polluting pedestrian corridors and triggering flash flooding.
                 </p>
-                    <main>
-      <section id="evidence">
-        <h2>Why this matters</h2>
-<!--Source: UNEP & NEMA Solid Waste Strategy 2021 -->
-       <p>Nairobi generates over 2,400 tons of solid waste daily, leaving more than 1,300 tons uncollected in illegal dumpsites and waterways.</p>
-      </section>
-      <section id="feature">
-        <h2>The Tool</h2>
-            <p>Input your location to find out how you can help
-            <input type="text"  placeholder="Enter your location" id="location">              <button id="clickbutton">Action</button></p>
-            <div id="actionOutput"></div>
+                
+                <main>
+                    <section id="evidence">
+                        <h2>Why this matters</h2>
+                        <p>Nairobi generates over 2,400 tons of solid waste daily, leaving more than 1,300 tons uncollected in illegal dumpsites and waterways.</p>
+                    </section>
+                    
+                    <section id="feature">
+                        <h2>The Tool</h2>
+                        <p>Input your location to find out how you can help
+                            <input type="text" placeholder="Enter your location" id="location"> 
+                            <button id="clickbutton">Action</button>
+                        </p>
+                        <div id="actionOutput"></div>
+                    </section>
+                </main>
             </div>
 
- 
             <div class="image-container">
-                <img src="il2.png" >
+                <img src="il2.png" alt="Illustration">
             </div>
         </div>
-
-  
 
         <div class="bottomBar">
             Copyright © 2026 <strong>CLIMATE ACTION TOOL</strong> All rights reserved by <strong>Roundstudios</strong>
         </div>
     </div>
 
+    <!-- Modal Dialog -->
     <dialog id="collectorDialog" class="collector-dialog">
         <h2>Find Nearby Garbage Collectors</h2>
         <p>Select your village or zone on the map, or type your location below.</p>
@@ -76,6 +78,5 @@
     </dialog>
 
     <script src="script.js"></script>
-
 </body>
 </html>
