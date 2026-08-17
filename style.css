@@ -71,27 +71,6 @@ body {
     text-align: center;
 }
 
-<<<<<<< HEAD
-=======
-/* Pill Call-to-Action Button */
-.btn {
-    display: inline-block;
-    background-color: #d3e2f7;
-    color: #000000;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 24px;
-    border: none;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 0.2s ease;
-}
-
-.btn:hover {
-    background-color: #b8cbee;
-}
-
->>>>>>> 7f2159f5f4e851ac50e4ef71b28675f75aeb7b9a
 /* Right Side: Image Section */
 .image-container {
     flex: 1;
@@ -183,19 +162,8 @@ body {
     border-color: #333333 !important;
 }
 
-<<<<<<< HEAD
 .leaflet-control-zoom a:hover {
     background-color: #262626 !important;
-=======
-.zone-btn {
-    background-color: #a2ffa1;
-    color: #000000;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
->>>>>>> 7f2159f5f4e851ac50e4ef71b28675f75aeb7b9a
 }
 
 .leaflet-bar {
@@ -211,7 +179,6 @@ body {
     gap: 6px;
 }
 
-<<<<<<< HEAD
 .field-group label {
     font-weight: bold;
     font-size: 0.88rem;
@@ -228,13 +195,6 @@ input[type="text"] {
     padding: 10px 12px;
     font-size: 0.9rem;
     border: 1px solid #333333;
-=======
-#collectorLocation {
-    background-color: #a2ffa1;
-    color: #000000;
-    border: none;
-    padding: 8px 12px;
->>>>>>> 7f2159f5f4e851ac50e4ef71b28675f75aeb7b9a
     border-radius: 6px;
     background-color: #1a1a1a;
     color: #ffffff;
