@@ -98,10 +98,10 @@ const garbageCollectorsData = {
     ]
 };
 
-// Function to show local actions
+// Main Page Action Logic
 function showLocalAction() {
     const locationInput = document.getElementById('location');
-    const location = locationInput.value.trim();
+    const location = locationInput ? locationInput.value.trim() : '';
     const outputDiv = document.getElementById('actionOutput');
     let actionMessage = '';
 
@@ -115,10 +115,9 @@ function showLocalAction() {
         actionMessage = 'Default action: Visit nairobiwastemap.org to find the nearest registered waste collector in your area.';
     }
 
-    outputDiv.textContent = actionMessage;
+    if (outputDiv) outputDiv.textContent = actionMessage;
 }
 
-// Attach event listener for the main page Action button
 const clickButton = document.getElementById('clickbutton');
 if (clickButton) {
     clickButton.addEventListener('click', showLocalAction);
@@ -132,7 +131,6 @@ const resultsSideWindow = document.getElementById('resultsSideWindow');
 const collectorsContainer = document.getElementById('collectorsContainer');
 const resultsHeader = document.getElementById('resultsHeader');
 
-// Open dialog when clicking "Tool" link
 if (toolLink && collectorDialog) {
     toolLink.addEventListener('click', (e) => {
         e.preventDefault();
@@ -140,7 +138,6 @@ if (toolLink && collectorDialog) {
     });
 }
 
-// Close dialog and reset side panel
 if (closeDialogBtn && collectorDialog) {
     closeDialogBtn.addEventListener('click', () => {
         collectorDialog.close();
@@ -148,33 +145,44 @@ if (closeDialogBtn && collectorDialog) {
     });
 }
 
+// Helper to render individual card elements
+function appendCollectorCard(collector, zone = null) {
+    const card = document.createElement('div');
+    card.className = 'collector-card';
+    const zoneBadge = zone ? `<p style="color:#a2ffa1; font-weight:bold; margin-bottom:4px;">[${zone.charAt(0).toUpperCase() + zone.slice(1)}]</p>` : '';
+    
+    card.innerHTML = `
+        ${zoneBadge}
+        <h4>${collector.name}</h4>
+        <p><strong>Address:</strong> ${collector.address}</p>
+        <p><strong>Schedule:</strong> ${collector.schedule}</p>
+        <p><strong>Phone:</strong> ${collector.phone}</p>
+        <p><strong>Email:</strong> ${collector.email}</p>
+    `;
+    collectorsContainer.appendChild(card);
+}
+
 // Render collectors into the side window
 function displayCollectors(zoneQuery) {
     const key = zoneQuery.toLowerCase().trim();
-    const collectors = garbageCollectorsData[key];
+    const validZones = ["mathare", "kibera", "westlands", "eastlands", "kasarani", "karen"];
 
     collectorsContainer.innerHTML = '';
 
-    if (collectors && collectors.length > 0) {
+    if (validZones.includes(key)) {
+        // Matched input zone
+        const collectors = garbageCollectorsData[key];
         resultsHeader.textContent = `Collectors in ${zoneQuery.charAt(0).toUpperCase() + zoneQuery.slice(1)}`;
-        collectors.forEach(collector => {
-            const card = document.createElement('div');
-            card.className = 'collector-card';
-            card.innerHTML = `
-                <h4>${collector.name}</h4>
-                <p><strong>Address:</strong> ${collector.address}</p>
-                <p><strong>Schedule:</strong> ${collector.schedule}</p>
-                <p><strong>Phone:</strong> ${collector.phone}</p>
-                <p><strong>Email:</strong> ${collector.email}</p>
-            `;
-            collectorsContainer.appendChild(card);
-        });
+        collectors.forEach(collector => appendCollectorCard(collector));
     } else {
-        resultsHeader.textContent = 'No Services Found';
-        collectorsContainer.innerHTML = `<p style="font-size:13px; color:#666;">No registered collectors found for "${zoneQuery}". Try Kibera, Westlands, Karen, Mathare, Kasarani, or Eastlands.</p>`;
+        // Unrecognized input fallback: Display ALL services from Mathare, Kibera, Westlands, Eastlands, Kasarani, and Karen
+        resultsHeader.textContent = 'All Collectors (Mathare, Kibera, Westlands, Eastlands, Kasarani, Karen)';
+        validZones.forEach(zone => {
+            const collectors = garbageCollectorsData[zone];
+            collectors.forEach(collector => appendCollectorCard(collector, zone));
+        });
     }
 
-    // Display the side window horizontally adjacent to the main panel
     resultsSideWindow.style.display = 'block';
 }
 
@@ -206,8 +214,9 @@ if (findCollectorsBtn) {
             displayCollectors(query);
         } else {
             if (collectorResults) {
-                collectorResults.textContent = 'Please enter or select a location.';
+                collectorResults.textContent = 'Displaying all available regional collectors.';
             }
+            displayCollectors('all');
         }
     });
 }
