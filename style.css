@@ -132,7 +132,7 @@
 }
 
 .zone-btn {
-    background-color: #f0f4f8;
+    background-color: #a2ffa1;
     border: 1px solid #d3e2f7;
     padding: 8px 12px;
     border-radius: 6px;
@@ -140,7 +140,7 @@
 }
 
 .zone-btn:hover {
-    background-color: #d3e2f7;
+    background-color: #8afc88;
 }
 
 .dialog-search {
@@ -152,11 +152,10 @@
 #collectorResults {
     margin: 15px 0;
     font-weight: bold;
-    color: #2b6cb0;
 }
 
 .close-dialog-btn {
-    background-color: #e2e8f0;
+    background-color: #a2ffa1;
     border: none;
     padding: 8px 16px;
     border-radius: 6px;
