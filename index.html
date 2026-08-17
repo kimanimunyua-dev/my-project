@@ -13,7 +13,7 @@
         <div class="topBar">
             <a href="#">Roundstudios</a> | 
             <a href="#">Homepage</a> | 
-            <a href="#" id="toolLink">Tool</a> | 
+            <a href="#" id="toolLink">The Tool</a> | 
             <a href="#">Donations</a> |
             <a href="#">About</a>
         </div>
@@ -32,15 +32,6 @@
                         <h2>Why this matters</h2>
                         <p>Nairobi generates over 2,400 tons of solid waste daily, leaving more than 1,300 tons uncollected in illegal dumpsites and waterways.</p>
                     </section>
-                    
-                    <section id="feature">
-                        <h2>The Tool</h2>
-                        <p>Input your location to find out how you can help
-                            <input type="text" placeholder="Enter your location" id="location"> 
-                            <button id="clickbutton">Action</button>
-                        </p>
-                        <div id="actionOutput"></div>
-                    </section>
                 </main>
             </div>
 
@@ -56,27 +47,38 @@
 
     <!-- Modal Dialog -->
     <dialog id="collectorDialog" class="collector-dialog">
-        <h2>Find Nearby Garbage Collectors</h2>
+        <div class="dialog-layout">
+            <!-- Left Main Window -->
+            <div class="dialog-main">
+                <h2>Find Nearby Garbage Collectors</h2>
 
-        <div id="zoneMap" class="zone-map" aria-label="Select your zone on the map">
-            <button type="button" class="zone-btn" data-zone="Kibera">Kibera</button>
-            <button type="button" class="zone-btn" data-zone="Westlands">Westlands</button>
-            <button type="button" class="zone-btn" data-zone="Karen">Karen</button>
-            <button type="button" class="zone-btn" data-zone="Mathare">Mathare</button>
-            <button type="button" class="zone-btn" data-zone="Kasarani">Kasarani</button>
-            <button type="button" class="zone-btn" data-zone="Eastlands">Eastlands</button>
+                <div id="zoneMap" class="zone-map" aria-label="Select your zone on the map">
+                    <button type="button" class="zone-btn" data-zone="Kibera">Kibera</button>
+                    <button type="button" class="zone-btn" data-zone="Westlands">Westlands</button>
+                    <button type="button" class="zone-btn" data-zone="Karen">Karen</button>
+                    <button type="button" class="zone-btn" data-zone="Mathare">Mathare</button>
+                    <button type="button" class="zone-btn" data-zone="Kasarani">Kasarani</button>
+                    <button type="button" class="zone-btn" data-zone="Eastlands">Eastlands</button>
+                </div>
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d255282.32335424496!2d36.84739685!3d-1.3032089500000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ske!4v1786952030661!5m2!1sen!2ske"
+                 width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+
+                <div class="dialog-search">
+                    <input type="text" id="collectorLocation" placeholder="Enter your location">
+                    <button type="button" id="findCollectorsBtn">Find collectors</button>
+                </div>
+
+                <div id="collectorResults"></div>
+                <button type="button" id="closeDialogBtn" class="close-dialog-btn">Close</button>
+            </div>
+
+            <!-- Right Side Window (Appears on Search) -->
+            <div id="resultsSideWindow" class="results-side-window">
+                <h3 id="resultsHeader">Nearby Services</h3>
+                <div id="collectorsContainer" class="collectors-container"></div>
+            </div>
         </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d255282.32335424496!2d36.84739685!3d-1.3032089500000001!2m3!1f0!2f0!3f
-        0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ske!4v1786952030661!5m2!1sen!2ske"
-         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-
-        <div class="dialog-search">
-            <input type="text" id="collectorLocation" placeholder="Enter your location">
-            <button type="button" id="findCollectorsBtn">Find collectors</button>
-        </div>
-
-        <div id="collectorResults"></div>
-        <button type="button" id="closeDialogBtn" class="close-dialog-btn">Close</button>
     </dialog>
 
     <script src="script.js"></script>
