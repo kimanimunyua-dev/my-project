@@ -14,7 +14,7 @@
         <!--Not functional (yet) just for aesthetic-->    
             <a href="#">Roundstudios</a> | 
             <a href="#">Homepage</a> | 
-            <a href="#">Tool</a> | 
+            <a href="#" id="toolLink">Tool</a> | 
             <a href="#">Donations</a> |
             <a href="#">About</a>
         </div>
@@ -53,9 +53,29 @@
         </div>
     </div>
 
-    <script src="script.js">
+    <dialog id="collectorDialog" class="collector-dialog">
+        <h2>Find Nearby Garbage Collectors</h2>
+        <p>Select your village or zone on the map, or type your location below.</p>
 
-    </script>
+        <div id="zoneMap" class="zone-map" aria-label="Select your zone on the map">
+            <button type="button" class="zone-btn" data-zone="Kibera">Kibera</button>
+            <button type="button" class="zone-btn" data-zone="Westlands">Westlands</button>
+            <button type="button" class="zone-btn" data-zone="Karen">Karen</button>
+            <button type="button" class="zone-btn" data-zone="Mathare">Mathare</button>
+            <button type="button" class="zone-btn" data-zone="Kasarani">Kasarani</button>
+            <button type="button" class="zone-btn" data-zone="Eastlands">Eastlands</button>
+        </div>
+
+        <div class="dialog-search">
+            <input type="text" id="collectorLocation" placeholder="Enter your location">
+            <button type="button" id="findCollectorsBtn">Find nearby garbage collectors</button>
+        </div>
+
+        <div id="collectorResults"></div>
+        <button type="button" id="closeDialogBtn" class="close-dialog-btn">Close</button>
+    </dialog>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
