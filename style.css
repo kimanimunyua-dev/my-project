@@ -1,8 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #000000; /* Inverted white to black */
-    color: #ffffff; /* Inverted black to white */
+    background-color: #000000;
+    color: #ffffff;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@ body {
 
 /* Central content block */
 .main-content {
-    background-color: #000000; /* Inverted white to black */
+    background-color: #000000;
     margin: 40px 0;
     padding: 30px 20px;
     flex-grow: 1;
@@ -28,7 +28,7 @@ body {
 }
 
 .topBar a {
-    color: #ffffff; /* Inverted black to white */
+    color: #ffffff;
     text-decoration: none;
     margin: 0 6px;
 }
@@ -57,7 +57,7 @@ body {
 .txt h1 {
     font-size: 28px;
     font-weight: 800;
-    color: #ffffff; /* Inverted black to white */
+    color: #ffffff;
     letter-spacing: 1px;
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -65,12 +65,14 @@ body {
 
 .txt p {
     font-size: 13px;
-    color: #ffffff; /* Inverted black to white */
+    color: #ffffff;
     line-height: 1.6;
     margin-bottom: 25px;
     text-align: center;
 }
 
+<<<<<<< HEAD
+=======
 /* Pill Call-to-Action Button */
 .btn {
     display: inline-block;
@@ -89,6 +91,7 @@ body {
     background-color: #b8cbee;
 }
 
+>>>>>>> 7f2159f5f4e851ac50e4ef71b28675f75aeb7b9a
 /* Right Side: Image Section */
 .image-container {
     flex: 1;
@@ -108,51 +111,82 @@ body {
 /* Bottom Footer Bar */
 .bottomBar {
     text-align: center;
-    color: #ffffff; /* Inverted black to white */
+    color: #ffffff;
     font-size: 13px;
     margin-top: 20px;
 }
 
-/* Dialog / Modal Styling */
+/* Modal / Dialog Styling */
 .collector-dialog {
-    background-color: #000000; /* Inverted white to black */
+    background-color: #111111;
     color: #ffffff;
-    border: 1px solid #333333;
+    border: 2px solid #a2ffa1;
     border-radius: 12px;
     padding: 24px;
-    max-width: 950px;
-    width: 90%;
-    box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+    max-width: 850px;
+    width: 92%;
+    box-shadow: 0 10px 30px rgba(162, 255, 161, 0.15);
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .collector-dialog::backdrop {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(3px);
 }
 
-.dialog-layout {
+.dialog-header {
     display: flex;
-    gap: 20px;
-    align-items: stretch;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #a2ffa1;
+    padding-bottom: 10px;
+    margin-bottom: 16px;
 }
 
-.dialog-main {
-    flex: 1;
-    min-width: 320px;
+.dialog-header h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.dialog-main iframe {
+.close-dialog-btn {
+    background: transparent;
+    color: #a2ffa1;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 1;
+    padding: 0 6px;
+}
+
+.close-dialog-btn:hover {
+    color: #8afc88;
+}
+
+/* Interactive Map Styling */
+#map {
+    height: 340px;
     width: 100%;
-    height: 320px;
     border-radius: 8px;
+    border: 1px solid #333333;
+    background-color: #1a1a1a;
 }
 
-.zone-map {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 15px 0;
+/* Leaflet Zoom Overrides */
+.leaflet-control-zoom a {
+    background-color: #1a1a1a !important;
+    color: #a2ffa1 !important;
+    border-color: #333333 !important;
 }
 
+<<<<<<< HEAD
+.leaflet-control-zoom a:hover {
+    background-color: #262626 !important;
+=======
 .zone-btn {
     background-color: #a2ffa1;
     color: #000000;
@@ -161,100 +195,145 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
+>>>>>>> 7f2159f5f4e851ac50e4ef71b28675f75aeb7b9a
 }
 
-.zone-btn:hover {
-    background-color: #8afc88;
+.leaflet-bar {
+    border: 1px solid #333333 !important;
+    box-shadow: none !important;
 }
 
-.dialog-search {
-    margin: 15px 0;
+/* Form Controls */
+.field-group {
+    margin-top: 16px;
     display: flex;
-    gap: 8px;
+    flex-direction: column;
+    gap: 6px;
 }
 
+<<<<<<< HEAD
+.field-group label {
+    font-weight: bold;
+    font-size: 0.88rem;
+    color: #dddddd;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    border: 1px solid #333333;
+=======
 #collectorLocation {
     background-color: #a2ffa1;
     color: #000000;
     border: none;
     padding: 8px 12px;
+>>>>>>> 7f2159f5f4e851ac50e4ef71b28675f75aeb7b9a
     border-radius: 6px;
-    flex: 1;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease;
 }
 
-/* Compact Find Collectors Button */
-#findCollectorsBtn {
+input[type="text"]:focus {
+    border-color: #a2ffa1;
+}
+
+input[type="text"]::placeholder {
+    color: #777777;
+}
+
+.btn-search {
+    padding: 10px 18px;
     background-color: #a2ffa1;
-    border: none;
-    padding: 8px 10px; /* Reduced width via padding */
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
     color: #000000;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
     white-space: nowrap;
-    width: auto; /* Fits content compactly */
-    font-size: 13px;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
 }
 
-#findCollectorsBtn:hover {
+.btn-search:hover {
     background-color: #8afc88;
 }
 
-#collectorResults {
-    margin: 15px 0;
+/* Results Display */
+.services-section {
+    margin-top: 22px;
+}
+
+.services-section h3 {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.service-card {
+    border-left: 4px solid #a2ffa1;
+    border-radius: 6px;
+    padding: 12px 14px;
+    background-color: #1a1a1a;
+}
+
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.service-name {
+    font-size: 1rem;
     font-weight: bold;
     color: #ffffff;
 }
 
-.close-dialog-btn {
-    background-color: #a2ffa1;
-    color: #000000;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
+.distance-badge {
+    background-color: #142e17;
+    color: #a2ffa1;
+    font-size: 0.8rem;
     font-weight: bold;
-}
-
-/* Side Results Window */
-.results-side-window {
-    display: none;
-    flex: 1;
-    min-width: 300px;
-    max-width: 380px;
-    background-color: #111111; /* Dark background */
-    border: 2px solid #a2ffa1;
+    padding: 3px 8px;
     border-radius: 12px;
+    border: 1px solid rgba(162, 255, 161, 0.4);
+}
+
+.service-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 6px;
+    font-size: 0.85rem;
+    color: #dddddd;
+}
+
+.detail-item span.label {
+    font-weight: bold;
+    color: #aaaaaa;
+}
+
+.empty-state {
     padding: 16px;
-    max-height: 520px;
-    overflow-y: auto;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-}
-
-.results-side-window h3 {
-    margin-top: 0;
-    color: #ffffff; /* Inverted header text */
-    border-bottom: 2px solid #a2ffa1;
-    padding-bottom: 8px;
-}
-
-.collector-card {
-    background-color: #1a1a1a; /* Dark card background */
-    border-left: 4px solid #a2ffa1;
+    text-align: center;
+    color: #888888;
+    font-style: italic;
+    background: #1a1a1a;
+    border: 1px dashed #333333;
     border-radius: 6px;
-    padding: 12px;
-    margin-bottom: 12px;
-}
-
-.collector-card h4 {
-    margin: 0 0 6px 0;
-    color: #ffffff; /* Inverted title text */
-    font-size: 15px;
-}
-
-.collector-card p {
-    margin: 4px 0;
-    font-size: 12px;
-    color: #dddddd; /* Light gray body text */
-    line-height: 1.4;
+    font-size: 0.9rem;
 }
