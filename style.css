@@ -101,7 +101,7 @@ body {
     border: none;
     border-radius: 12px;
     background: transparent;
-    max-width: 900px;
+    max-width: 1100px;
     width: 95%;
     max-height: 90vh;
     overflow-y: auto;
@@ -126,7 +126,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 h1 {
@@ -149,8 +149,33 @@ h1 {
     color: #85e684;
 }
 
+/* Horizontal Side-by-Side Modal Body Grid */
+.modal-body-grid {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+@media (max-width: 850px) {
+    .modal-body-grid {
+        flex-direction: column;
+    }
+}
+
+.modal-left-col {
+    flex: 1.1;
+    min-width: 300px;
+    width: 100%;
+}
+
+.modal-right-col {
+    flex: 0.9;
+    min-width: 300px;
+    width: 100%;
+}
+
 #map {
-    height: 420px;
+    height: 380px;
     width: 100%;
     border-radius: 8px;
     border: 1px solid #333333;
@@ -181,7 +206,7 @@ h1 {
 }
 
 .field-group {
-    margin-top: 20px;
+    margin-top: 16px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -240,13 +265,16 @@ input[type="text"]::placeholder {
 
 /* Garbage Services Section */
 .services-section {
-    margin-top: 28px;
+    background-color: #161616;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #2e2e2e;
 }
 
 .services-title {
     font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     color: #f1f5f9;
 }
 
@@ -254,6 +282,9 @@ input[type="text"]::placeholder {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 4px;
 }
 
 .service-card {
@@ -294,7 +325,7 @@ input[type="text"]::placeholder {
 
 .service-details {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 8px;
     font-size: 0.9rem;
     color: #cbd5e1;

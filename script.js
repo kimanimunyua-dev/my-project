@@ -66,6 +66,16 @@ const nairobiGarbageServices = [
     }
 ];
 
+// Nairobi Boundary Definition (Strict bounding box around Nairobi County)
+const nairobiBounds = L.latLngBounds(
+    L.latLng(-1.45, 36.65), // South-West point
+    L.latLng(-1.15, 37.10)  // North-East point
+);
+
+function isInNairobi(lat, lng) {
+    return nairobiBounds.contains([lat, lng]);
+}
+
 let map;
 let activeMarker;
 
@@ -80,19 +90,28 @@ const greenPinIcon = L.divIcon({
     iconAnchor: [14, 40]
 });
 
-// Initialize Leaflet Map
+// Initialize Leaflet Map with Nairobi boundaries
 function initMap() {
     if (map) return;
 
-    map = L.map('map').setView([-1.286389, 36.817223], 13);
+    map = L.map('map', {
+        maxBounds: nairobiBounds,
+        maxBoundsViscosity: 1.0,
+        minZoom: 11
+    }).setView([-1.286389, 36.817223], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
+        bounds: nairobiBounds,
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
     map.on('click', function (e) {
         const { lat, lng } = e.latlng;
+        if (!isInNairobi(lat, lng)) {
+            document.getElementById('location-output').value = "Please enter a valid location in Nairobi";
+            return;
+        }
         setLocation(lat, lng);
     });
 }
@@ -150,6 +169,11 @@ function renderServicesList(services) {
 async function setLocation(lat, lng, displayName = null) {
     const outputBox = document.getElementById('location-output');
 
+    if (!isInNairobi(lat, lng)) {
+        outputBox.value = "Please enter a valid location in Nairobi";
+        return;
+    }
+
     if (activeMarker) {
         activeMarker.setLatLng([lat, lng]);
     } else {
@@ -165,7 +189,13 @@ async function setLocation(lat, lng, displayName = null) {
                 `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`
             );
             const data = await response.json();
-            outputBox.value = data.display_name || `Latitude: ${lat.toFixed(4)}, Longitude: ${lng.toFixed(4)}`;
+            
+            // Confirm the reverse geocoded result is inside Nairobi
+            if (data.address && (data.address.county === "Nairobi" || data.address.city === "Nairobi" || data.display_name.includes("Nairobi"))) {
+                outputBox.value = data.display_name;
+            } else {
+                outputBox.value = `Latitude: ${lat.toFixed(4)}, Longitude: ${lng.toFixed(4)}`;
+            }
         } catch {
             outputBox.value = `Latitude: ${lat.toFixed(4)}, Longitude: ${lng.toFixed(4)}`;
         }
@@ -177,14 +207,22 @@ async function setLocation(lat, lng, displayName = null) {
 
 async function handleSearch() {
     const query = document.getElementById('search-input').value.trim();
-    if (!query) return;
-
     const outputBox = document.getElementById('location-output');
+
+    if (!query) {
+        if (!activeMarker) {
+            outputBox.value = "Location not input. Please input your location";
+        }
+        return;
+    }
+
     outputBox.value = "Searching location...";
 
     try {
+        // Explicitly focus query on Nairobi, Kenya
+        const searchQuery = query.toLowerCase().includes("nairobi") ? query : `${query}, Nairobi, Kenya`;
         const response = await fetch(
-            `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`
+            `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}`
         );
         const data = await response.json();
 
@@ -193,13 +231,18 @@ async function handleSearch() {
             const lat = parseFloat(firstResult.lat);
             const lon = parseFloat(firstResult.lon);
 
+            if (!isInNairobi(lat, lon)) {
+                outputBox.value = "Please enter a valid location in Nairobi";
+                return;
+            }
+
             map.setView([lat, lon], 14);
             setLocation(lat, lon, firstResult.display_name);
         } else {
-            outputBox.value = "Location not found. Please try a different query.";
+            outputBox.value = "Please enter a valid location in Nairobi";
         }
     } catch {
-        outputBox.value = "Error searching location. Please try again.";
+        outputBox.value = "Please enter a valid location in Nairobi";
     }
 }
 
@@ -212,6 +255,11 @@ if (toolLink && collectorDialog) {
     toolLink.addEventListener('click', (e) => {
         e.preventDefault();
         collectorDialog.showModal();
+
+        // Reset display message when no active selection exists
+        if (!activeMarker) {
+            document.getElementById('location-output').value = "Location not input. Please input your location";
+        }
 
         // Initialize map & force recalculation of dimensions once modal opens
         initMap();

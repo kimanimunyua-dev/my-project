@@ -52,42 +52,47 @@
     <dialog id="collectorDialog" class="collector-modal">
         <div class="card">
             <div class="modal-header-row">
-                <h1>Interactive Map Location & Collector Finder</h1>
+                <h1>Collector Finder</h1>
                 <button type="button" id="closeDialogBtn" class="modal-close-btn">&times;</button>
             </div>
             
-            <!-- Map Container -->
-            <div id="map"></div>
+            <div class="modal-body-grid">
+                <!-- Left Section: Map & Input Controls -->
+                <div class="modal-left-col">
+                    <!-- Map Container -->
+                    <div id="map"></div>
 
-            <!-- Search Location Input Box -->
-            <div class="field-group">
-                <label for="search-input">Search Location:</label>
-                <div class="search-box">
-                    <input 
-                        type="text" 
-                        id="search-input" 
-                        placeholder="Enter a location (e.g., Westlands, Kilimani, Lavington)..." 
-                    />
-                    <button id="search-btn" class="btn-search" type="button">Search</button>
+                    <!-- Search Location Input Box -->
+                    <div class="field-group">
+                        <label for="search-input">Search Location:</label>
+                        <div class="search-box">
+                            <input 
+                                type="text" 
+                                id="search-input" 
+                                placeholder="Enter a location (e.g., Westlands, Kilimani, Lavington)..." 
+                            />
+                            <button id="search-btn" class="btn-search" type="button">Search</button>
+                        </div>
+                    </div>
+
+                    <!-- Selected Location Output Box -->
+                    <div class="field-group">
+                        <label for="location-output">Selected Location Name:</label>
+                        <input 
+                            type="text" 
+                            id="location-output" 
+                            value="Location not input. Please input your location" 
+                            readonly 
+                        />
+                    </div>
                 </div>
-            </div>
 
-            <!-- Selected Location Output Box -->
-            <div class="field-group">
-                <label for="location-output">Selected Location Name:</label>
-                <input 
-                    type="text" 
-                    id="location-output" 
-                    placeholder="Click on the map or search to display location..." 
-                    readonly 
-                />
-            </div>
-
-            <!-- Garbage Collection Services Container -->
-            <div class="services-section">
-                <div class="services-title">Top 5 Closest Garbage Collection Services</div>
-                <div id="services-list" class="services-list">
-                    <div class="empty-state">Click a location on the map or search above to view nearby garbage collection services.</div>
+                <!-- Right Section: Garbage Collection Services Container -->
+                <div class="modal-right-col services-section">
+                    <div class="services-title">Nearby Collectors</div>
+                    <div id="services-list" class="services-list">
+                        <div class="empty-state">Click a location on the map or search above to view nearby garbage collection services.</div>
+                    </div>
                 </div>
             </div>
         </div>
