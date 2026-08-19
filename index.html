@@ -13,26 +13,36 @@
     <div class="main-content">
         <!-- Top Navigation -->
         <div class="topBar">
-            <a href="#">Roundstudios</a> | 
-            <a href="#">Homepage</a> | 
-            <a href="#" id="toolLink">The Tool</a> | 
-            <a href="#">Donations</a> |
-            <a href="#">About</a>
+            <div class="nav-links">
+                <a href="#">Roundstudios</a> |  
+                <a href="#" data-en="Homepage" data-sw="Ukurasa Mkuu">Homepage</a> |     
+                <a href="#" id="toolLink" data-en="The Tool" data-sw="Zana">The Tool</a> |   
+                <a href="#" id="feedbackLink" data-en="Feed Back" data-sw="Maoni">Feedback</a> |  
+                <a href="#" data-en="Donations" data-sw="Michango">Donations</a> |     
+                <a href="#" data-en="About" data-sw="Kuhusu">About</a>   
+            </div>
+            <!-- Top Right Action Controls -->
+            <div class="top-controls">
+                <button id="themeToggleBtn" class="theme-btn">Light Mode</button>
+                <button id="langToggleBtn" class="lang-btn">Swahili</button>
+            </div>
         </div>
 
         <!-- Main Content Area -->
         <div class="mycontainer">
             <!-- Left Text Box -->
             <div class="txt">
-                <h1>Project Title: Nairobi Waste Action</h1>
-                <p>
+                <h1 data-en="Project Title: Nairobi Waste Action" data-sw="Kichwa cha Mradi: Hatua za Taka za Nairobi">Project Title: Nairobi Waste Action</h1>
+                <p data-en="Residents living in densely populated areas (like Kibera) in Nairobi with non-existent or faulty garbage collection systems are struggling to safely manage and dispose of their daily household waste because public municipal collection services are severely inadequate, while formal private collection services remain financially out of reach for average households. Research evaluating solid waste infrastructure in Nairobi found that the city generates between 2,400 and 3,000 tons of waste daily, yet public and formal private services collect less than 45% of this total—leaving over 1,300 tons of unmanaged waste accumulating in residential estates every day, while 93% of formally collected waste is dumped untreated into landfills due to cost and infrastructure barriers. UNEP & NEMA—Solid Waste Strategy (2021); CET—Plastic Flow Assessment (2025). Residents therefore experience severe health and environmental hazards continuously but are forced to respond by burning trash along walkways or dumping waste into open drains rather than connecting with accessible, affordable collection solutions."
+                   data-sw="Wakazi wanaoishi katika maeneo yenye idadi kubwa ya watu (kama Kibera) jijini Nairobi walio na mifumo duni au isiyofanya kazi ya kukusanya taka wanatatizika kudhibiti na kutupa taka zao za kila siku salama kwa sababu huduma za umma za manispaa hazitoshi kabisa, huku huduma rasmi za kibinafsi zikisalia kuwa za gharama kubwa kwa familia za kawaida. Utafiti unaotathmini miundombinu ya taka ngumu jijini Nairobi ulibaini kuwa jiji hilo linazalisha kati ya tani 2,400 na 3,000 za taka kila siku, lakini huduma za umma na za kibinafsi zinakusanya chini ya 45% ya jumla hii—wakiacha zaidi ya tani 1,300 za taka zisizodhibitiwa zikilundikana katika mitaa ya makazi kila siku, huku 93% ya taka zilizokusanywa rasmi zikitupwa bila kushughulikiwa kwenye dampo kutokana na vikwazo vya gharama na miundombinu. UNEP & NEMA—Mkakati wa Taka Ngumu (2021); CET—Tathmini ya Mtiririko wa Plastiki (2025). Kwa hivyo, wakazi wanapata hatari kubwa za kiafya na kimazingira mfululizo lakini wanalazimika kujibu kwa kuchoma taka kando ya njia za পথ au kutupa taka kwenye mifereji ya wazi badala ya kuungana na suluhisho zinazopatikana na nafuu za ukusanyaji.">
                     Residents living in densely populated areas (like Kibera) in Nairobi with non-existent or faulty garbage collection systems are struggling to safely manage and dispose of their daily household waste because public municipal collection services are severely inadequate, while formal private collection services remain financially out of reach for average households. Research evaluating solid waste infrastructure in Nairobi found that the city generates between 2,400 and 3,000 tons of waste daily, yet public and formal private services collect less than 45% of this total—leaving over 1,300 tons of unmanaged waste accumulating in residential estates every day, while 93% of formally collected waste is dumped untreated into landfills due to cost and infrastructure barriers. UNEP & NEMA—Solid Waste Strategy (2021); CET—Plastic Flow Assessment (2025). Residents therefore experience severe health and environmental hazards continuously but are forced to respond by burning trash along walkways or dumping waste into open drains rather than connecting with accessible, affordable collection solutions.
                 </p>
                 
                 <main>
                     <section id="evidence">
-                        <h2>Why this matters</h2>
-                        <p>Nairobi generates over 2,400 tons of solid waste daily, leaving more than 1,300 tons uncollected in illegal dumpsites and waterways.</p>
+                        <h2 data-en="Why this matters" data-sw="Kwa nini hii ni muhimu">Why this matters</h2>
+                        <p data-en="Nairobi generates over 2,400 tons of solid waste daily, leaving more than 1,300 tons uncollected in illegal dumpsites and waterways."
+                           data-sw="Nairobi inazalisha zaidi ya tani 2,400 za taka ngumu kila siku, na kuacha zaidi ya tani 1,300 zikiwa hazijakusanywa katika dampo haramu na njia za maji.">Nairobi generates over 2,400 tons of solid waste daily, leaving more than 1,300 tons uncollected in illegal dumpsites and waterways.</p>
                     </section>
                 </main>
             </div>
@@ -43,15 +53,41 @@
         </div>
 
         <div class="bottomBar">
-            Copyright © 2026 <strong>CLIMATE ACTION TOOL</strong> All rights reserved by <strong>Roundstudios</strong>
+            <span data-en="Copyright © 2026" data-sw="Haki miliki © 2026">Copyright © 2026</span> 
+            <strong>CLIMATE ACTION TOOL</strong> 
+            <span data-en="All rights reserved by" data-sw="Haki zote zimehifadhiwa na">All rights reserved by</span> 
+            <strong>Roundstudios</strong>
         </div>
     </div>
 
-    <!-- Modal Dialog Pop-up -->
+    <!-- Feedback Modal Dialog -->
+    <dialog id="feedbackDialog" class="collector-modal">
+        <div class="card">
+            <div class="modal-header-row">
+                <h1 data-en="Feedback" data-sw="Maoni">Feedback</h1>
+                <button type="button" id="closeFeedbackBtn" class="modal-close-btn">&times;</button>
+            </div>
+            <div class="feedback-content">
+                <p class="feedback-intro-text" 
+                   data-en="Please submit your feedback about this website. Your ideas and opinions are much appreciated. Help us improve this site with your suggestions. Thankyou 🙏🏿" 
+                   data-sw="Tafadhali wasilisha maoni yako kuhusu tovuti hii. Mawazo na maoni yako yanathaminiwa sana. Tusaidie kuboresha tovuti hii kwa mapendekezo yako. Asante 🙏🏿">
+                    Please submit your feedback about this website. Your ideas and opinions are much appreciated. Help us improve this site with your suggestions. Thankyou 🙏🏿
+                </p>
+                <div class="field-group">
+                    <textarea id="feedbackInput" placeholder="Enter Feed Back" rows="5"></textarea>
+                </div>
+                <div class="feedback-btn-wrapper">
+                    <button type="button" id="submitFeedbackBtn" class="btn-green" data-en="Submit" data-sw="Wasilisha">Submit</button>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Modal Dialog Pop-up (The Tool) -->
     <dialog id="collectorDialog" class="collector-modal">
         <div class="card">
             <div class="modal-header-row">
-                <h1>Collector Finder</h1>
+                <h1 data-en="Collector Finder" data-sw="Tafuta Mkusanyaji Taka">Collector Finder</h1>
                 <button type="button" id="closeDialogBtn" class="modal-close-btn">&times;</button>
             </div>
             
@@ -63,20 +99,20 @@
 
                     <!-- Search Location Input Box -->
                     <div class="field-group">
-                        <label for="search-input">Search Location:</label>
+                        <label for="search-input" data-en="Search Location:" data-sw="Tafuta Eneo:">Search Location:</label>
                         <div class="search-box">
                             <input 
                                 type="text" 
                                 id="search-input" 
                                 placeholder="Enter a location (e.g., Westlands, Kilimani, Lavington)..." 
                             />
-                            <button id="search-btn" class="btn-search" type="button">Search</button>
+                            <button id="search-btn" class="btn-search" type="button" data-en="Search" data-sw="Tafuta">Search</button>
                         </div>
                     </div>
 
                     <!-- Selected Location Output Box -->
                     <div class="field-group">
-                        <label for="location-output">Selected Location Name:</label>
+                        <label for="location-output" data-en="Selected Location Name:" data-sw="Jina la Eneo Lililochaguliwa:">Selected Location Name:</label>
                         <input 
                             type="text" 
                             id="location-output" 
@@ -88,9 +124,21 @@
 
                 <!-- Right Section: Garbage Collection Services Container -->
                 <div class="modal-right-col services-section">
-                    <div class="services-title">Nearby Collectors</div>
+                    <div class="services-title" data-en="Nearby Collectors" data-sw="Wakusanyaji wa Karibu">Nearby Collectors</div>
+                    
+                    <!-- Dropdown Filter -->
+                    <div class="field-group filter-group">
+                        <label for="collector-type-select" data-en="Choose Collector Type:" data-sw="Chagua Aina ya Mkusanyaji:">Choose Collector Type:</label>
+                        <select id="collector-type-select">
+                            <option value="All" selected data-en="All" data-sw="Yote">All</option>
+                            <option value="Free" data-en="Free" data-sw="Bure">Free</option>
+                            <option value="Recycler" data-en="Recycler" data-sw="Mrejeshi">Recycler</option>
+                            <option value="Normal" data-en="Normal" data-sw="Kawaida">Normal</option>
+                        </select>
+                    </div>
+
                     <div id="services-list" class="services-list">
-                        <div class="empty-state">Click a location on the map or search above to view nearby garbage collection services.</div>
+                        <div class="empty-state" data-en="Click a location on the map or search above to view nearby garbage collection services." data-sw="Bonyeza eneo kwenye ramani au utafute hapo juu ili kuona huduma za ukusanyaji taka karibu nawe.">Click a location on the map or search above to view nearby garbage collection services.</div>
                     </div>
                 </div>
             </div>
