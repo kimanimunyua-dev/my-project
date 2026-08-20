@@ -894,6 +894,8 @@ function isInNairobi(lat, lng) {
 
 let map;
 let activeMarker;
+let collectorMarker = null;
+let routeLine = null;
 let currentSelectedLat = null;
 let currentSelectedLng = null;
 let currentLang = 'en'; // Default language: English
@@ -909,7 +911,43 @@ const greenPinIcon = L.divIcon({
     iconAnchor: [14, 40]
 });
 
+function clearCollectorRoute() {
+    if (collectorMarker) {
+        map.removeLayer(collectorMarker);
+        collectorMarker = null;
+    }
+    if (routeLine) {
+        map.removeLayer(routeLine);
+        routeLine = null;
+    }
+}
+
+function showCollectorRoute(service) {
+    clearCollectorRoute();
+    if (currentSelectedLat === null || currentSelectedLng === null) return;
+
+    collectorMarker = L.marker([service.lat, service.lng]).addTo(map);
+
+    const accentGreen = getComputedStyle(document.body).getPropertyValue('--accent-green').trim() || '#a2ffa1';
+    
+    const latlngs = [
+        [service.lat, service.lng],
+        [currentSelectedLat, currentSelectedLng]
+    ];
+
+    routeLine = L.polyline(latlngs, {
+        color: accentGreen,
+        weight: 5,
+        opacity: 0.9,
+        dashArray: '8, 8'
+    }).addTo(map);
+
+    const bounds = L.latLngBounds(latlngs);
+    map.fitBounds(bounds, { padding: [40, 40] });
+}
+
 function clearServicesList() {
+    clearCollectorRoute();
     const container = document.getElementById('services-list');
     const msgEn = "Click a location on the map or search above to view nearby garbage collection services.";
     const msgSw = "Bonyeza eneo kwenye ramani au utafute hapo juu ili kuona huduma za ukusanyaji taka karibu nawe.";
@@ -923,6 +961,7 @@ function unselectLocation(message = null) {
         map.removeLayer(activeMarker);
         activeMarker = null;
     }
+    clearCollectorRoute();
     currentSelectedLat = null;
     currentSelectedLng = null;
     
@@ -991,6 +1030,7 @@ function getFilteredServices(lat, lng, selectedType) {
 function renderServicesList(services, selectedType) {
     const container = document.getElementById('services-list');
     container.innerHTML = '';
+    clearCollectorRoute();
 
     if (!services || services.length === 0) {
         const noServ = currentLang === 'sw' 
@@ -999,6 +1039,8 @@ function renderServicesList(services, selectedType) {
         container.innerHTML = `<div class="empty-state">${noServ}</div>`;
         return;
     }
+
+    const rateCollectorDialog = document.getElementById('rateCollectorDialog');
 
     services.forEach(service => {
         const card = document.createElement('div');
@@ -1016,6 +1058,9 @@ function renderServicesList(services, selectedType) {
             ? `<div class="detail-item"><span class="label">${currentLang === 'sw' ? 'Gharama:' : 'Pricing:'}</span> ${service.pricing}</div>`
             : '';
 
+        const reqText = currentLang === 'sw' ? 'Omba Simu' : 'Request Call';
+        const rateText = currentLang === 'sw' ? 'Tathmini' : 'Rate';
+
         card.innerHTML = `
             <div class="service-header">
                 <div class="service-name">${service.name}</div>
@@ -1031,7 +1076,43 @@ function renderServicesList(services, selectedType) {
                 ${pricingHtml}
                 <div class="detail-item full-width"><span class="label">${currentLang === 'sw' ? 'Maelezo:' : 'Details:'}</span> ${service.details}</div>
             </div>
+            <div class="collector-actions">
+                <div class="action-buttons">
+                    <button type="button" class="btn-green request-call-btn" data-en="Request Call" data-sw="Omba Simu">${reqText}</button>
+                    <button type="button" class="btn-green rate-collector-btn" data-en="Rate" data-sw="Tathmini">${rateText}</button>
+                </div>
+                <div class="request-call-msg"></div>
+            </div>
         `;
+
+        card.addEventListener('mouseenter', () => {
+            showCollectorRoute(service);
+        });
+
+        card.addEventListener('mouseleave', () => {
+            clearCollectorRoute();
+        });
+
+        card.addEventListener('click', () => {
+            showCollectorRoute(service);
+        });
+
+        const reqBtn = card.querySelector('.request-call-btn');
+        const msgDiv = card.querySelector('.request-call-msg');
+        if (reqBtn && msgDiv) {
+            reqBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                msgDiv.textContent = `Request call sent to ${service.name}`;
+            });
+        }
+
+        const rateBtn = card.querySelector('.rate-collector-btn');
+        if (rateBtn && rateCollectorDialog) {
+            rateBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                rateCollectorDialog.showModal();
+            });
+        }
 
         container.appendChild(card);
     });
@@ -1150,25 +1231,32 @@ if (closeHowToUseBtn && howToUseDialog) {
 
 // Modal Pop-Up Logic (The Tool)
 const toolLink = document.getElementById('toolLink');
+const mainToolBtn = document.getElementById('mainToolBtn');
 const collectorDialog = document.getElementById('collectorDialog');
 const closeDialogBtn = document.getElementById('closeDialogBtn');
 
-if (toolLink && collectorDialog) {
-    toolLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        collectorDialog.showModal();
+function openToolModal(e) {
+    if (e) e.preventDefault();
+    collectorDialog.showModal();
 
-        if (!activeMarker) {
-            unselectLocation();
+    if (!activeMarker) {
+        unselectLocation();
+    }
+
+    initMap();
+    setTimeout(() => {
+        if (map) {
+            map.invalidateSize();
         }
+    }, 150);
+}
 
-        initMap();
-        setTimeout(() => {
-            if (map) {
-                map.invalidateSize();
-            }
-        }, 150);
-    });
+if (toolLink && collectorDialog) {
+    toolLink.addEventListener('click', openToolModal);
+}
+
+if (mainToolBtn && collectorDialog) {
+    mainToolBtn.addEventListener('click', openToolModal);
 }
 
 if (closeDialogBtn && collectorDialog) {
@@ -1200,6 +1288,51 @@ if (closeFeedbackBtn && feedbackDialog) {
 if (submitFeedbackBtn && feedbackInput) {
     submitFeedbackBtn.addEventListener('click', () => {
         feedbackInput.value = ''; // Empty text box on submit
+    });
+}
+
+// Rate Collector Dialog Star Rating Logic
+const rateCollectorDialog = document.getElementById('rateCollectorDialog');
+const closeRateBtn = document.getElementById('closeRateBtn');
+const finishRateBtn = document.getElementById('finishRateBtn');
+const rateFeedbackInput = document.getElementById('rateFeedbackInput');
+const starIcons = document.querySelectorAll('#starRating .star-icon');
+let selectedRating = 0;
+
+function updateStars(rating) {
+    starIcons.forEach((star, idx) => {
+        if (idx < rating) {
+            star.src = 'fs.png';
+        } else {
+            star.src = 'es.png';
+        }
+    });
+}
+
+starIcons.forEach(star => {
+    star.addEventListener('click', () => {
+        selectedRating = parseInt(star.getAttribute('data-index'), 10);
+        updateStars(selectedRating);
+    });
+});
+
+function resetRateModal() {
+    selectedRating = 0;
+    updateStars(0);
+    if (rateFeedbackInput) rateFeedbackInput.value = '';
+}
+
+if (closeRateBtn && rateCollectorDialog) {
+    closeRateBtn.addEventListener('click', () => {
+        rateCollectorDialog.close();
+        resetRateModal();
+    });
+}
+
+if (finishRateBtn && rateCollectorDialog) {
+    finishRateBtn.addEventListener('click', () => {
+        rateCollectorDialog.close();
+        resetRateModal();
     });
 }
 

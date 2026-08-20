@@ -148,7 +148,8 @@ body {
 
 /* Theme Toggle & Language Buttons */
 .theme-btn,
-.lang-btn {
+.lang-btn,
+.main-tool-btn {
     background-color: #ffffff;
     color: #000000;
     border: 1px solid #000000;
@@ -159,8 +160,15 @@ body {
     transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
+.main-tool-btn {
+    padding: 8px 18px;
+    margin-top: 12px;
+    display: inline-block;
+}
+
 body.light-mode .theme-btn,
-body.light-mode .lang-btn {
+body.light-mode .lang-btn,
+body.light-mode .main-tool-btn {
     background-color: #000000;
     color: #ffffff;
     border: 1px solid #ffffff;
@@ -367,7 +375,7 @@ textarea::placeholder {
 }
 
 .btn-green {
-    padding: 12px 24px;
+    padding: 10px 20px;
     background-color: var(--accent-green) !important;
     color: #121212 !important;
     border: none;
@@ -618,4 +626,46 @@ input[type="text"]::placeholder {
     background: var(--service-card-bg);
     border: 1px dashed var(--service-card-border);
     border-radius: 8px;
+}
+
+/* ==========================================================================
+   Collector Card Action Buttons & Route Styling
+   ========================================================================== */
+.collector-actions {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.request-call-msg {
+    font-size: 0.85rem;
+    color: var(--accent-green);
+    font-weight: 600;
+    min-height: 1.2em;
+}
+
+/* Star Rating Styling */
+.star-rating {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.star-icon {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.star-icon:hover {
+    transform: scale(1.15);
 }

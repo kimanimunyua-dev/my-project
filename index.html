@@ -41,6 +41,7 @@
                         <h2 data-en="Why this matters" data-sw="Kwa nini hii ni muhimu">Why this matters</h2>
                         <p data-en="Nairobi generates over 2,400 tons of solid waste daily, leaving more than 1,300 tons uncollected in illegal dumpsites and waterways."
                            data-sw="Nairobi inazalisha zaidi ya tani 2,400 za taka ngumu kila siku, na kuacha zaidi ya tani 1,300 zikiwa hazijakusanywa katika dampo haramu na njia za maji.">Nairobi generates over 2,400 tons of solid waste daily, leaving more than 1,300 tons uncollected in illegal dumpsites and waterways.</p>
+                        <button type="button" id="mainToolBtn" class="main-tool-btn" data-en="Tool" data-sw="Zana">Tool</button>
                     </section>
                 </main>
             </div>
@@ -198,6 +199,31 @@
                     <div id="services-list" class="services-list">
                         <div class="empty-state" data-en="Click a location on the map or search above to view nearby garbage collection services." data-sw="Bonyeza eneo kwenye ramani au utafute hapo juu ili kuona huduma za ukusanyaji taka karibu nawe.">Click a location on the map or search above to view nearby garbage collection services.</div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Rate Collector Modal Dialog -->
+    <dialog id="rateCollectorDialog" class="collector-modal">
+        <div class="card">
+            <div class="modal-header-row">
+                <h1 data-en="Rate Collector" data-sw="Tathmini Mkusanyaji">Rate Collector</h1>
+                <button type="button" id="closeRateBtn" class="modal-close-btn">&times;</button>
+            </div>
+            <div class="rate-content">
+                <div class="star-rating" id="starRating">
+                    <img src="es.png" alt="star" data-index="1" class="star-icon">
+                    <img src="es.png" alt="star" data-index="2" class="star-icon">
+                    <img src="es.png" alt="star" data-index="3" class="star-icon">
+                    <img src="es.png" alt="star" data-index="4" class="star-icon">
+                    <img src="es.png" alt="star" data-index="5" class="star-icon">
+                </div>
+                <div class="field-group">
+                    <textarea id="rateFeedbackInput" placeholder="Enter Feedback" rows="4"></textarea>
+                </div>
+                <div class="feedback-btn-wrapper">
+                    <button type="button" id="finishRateBtn" class="btn-green" data-en="Finish" data-sw="Maliza">Finish</button>
                 </div>
             </div>
         </div>
