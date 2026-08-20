@@ -898,7 +898,7 @@ let currentSelectedLat = null;
 let currentSelectedLng = null;
 let currentLang = 'en'; // Default language: English
 
-// Custom SVG Marker Icon in #a2ffa1
+// Custom SVG Marker Icon
 const greenPinIcon = L.divIcon({
     className: 'custom-marker',
     html: `<svg width="28" height="40" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1130,6 +1130,24 @@ async function handleSearch() {
     }
 }
 
+// Modal Pop-Up Logic (How To Use)
+const howToUseLink = document.getElementById('howToUseLink');
+const howToUseDialog = document.getElementById('howToUseDialog');
+const closeHowToUseBtn = document.getElementById('closeHowToUseBtn');
+
+if (howToUseLink && howToUseDialog) {
+    howToUseLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        howToUseDialog.showModal();
+    });
+}
+
+if (closeHowToUseBtn && howToUseDialog) {
+    closeHowToUseBtn.addEventListener('click', () => {
+        howToUseDialog.close();
+    });
+}
+
 // Modal Pop-Up Logic (The Tool)
 const toolLink = document.getElementById('toolLink');
 const collectorDialog = document.getElementById('collectorDialog');
@@ -1181,7 +1199,7 @@ if (closeFeedbackBtn && feedbackDialog) {
 
 if (submitFeedbackBtn && feedbackInput) {
     submitFeedbackBtn.addEventListener('click', () => {
-        feedbackInput.value = ''; // Empty the text box on submit
+        feedbackInput.value = ''; // Empty text box on submit
     });
 }
 

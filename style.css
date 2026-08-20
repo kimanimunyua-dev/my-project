@@ -1,3 +1,24 @@
+/* Add styling for title and subtitle using CSS theme variables */
+.txt .site-title {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--text-color);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.txt .site-caption {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color); /* Updated to match .site-title */
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
 /* ==========================================================================
    Theme Variables (Dark Default & Light Mode)
    ========================================================================== */
@@ -49,6 +70,8 @@ body.light-mode {
     --label-color: #334155;
     --muted-text: #64748b;
     --details-text: #475569;
+    --accent-green: #15803d;
+    --accent-green-hover: #166534;
     --backdrop-bg: rgba(0, 0, 0, 0.5);
     --map-bg: #e2e8f0;
     --map-border: #cbd5e1;
@@ -165,15 +188,6 @@ body.light-mode .lang-btn {
     padding: 20px;
 }
 
-.txt h1 {
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--text-color);
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
-
 .txt p {
     font-size: 13px;
     color: var(--text-color);
@@ -263,6 +277,54 @@ body.light-mode .lang-btn {
 
 .modal-close-btn:hover {
     color: var(--close-btn-hover);
+}
+
+/* ==========================================================================
+   How To Use Modal Content Layout
+   ========================================================================== */
+.how-to-use-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.section-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent-green);
+    margin-top: 12px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 6px;
+}
+
+.image-pair {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.image-pair img {
+    flex: 1;
+    width: 50%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    object-fit: cover;
+}
+
+.feature-caption {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--details-text);
+    margin: 0 0 12px 0;
+    background-color: var(--services-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid var(--accent-green);
 }
 
 /* ==========================================================================

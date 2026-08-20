@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Climate Action Tool</title>
+    <title>FAC - Find a Collector</title>
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css">
@@ -14,12 +14,9 @@
         <!-- Top Navigation -->
         <div class="topBar">
             <div class="nav-links">
-                <a href="#">Roundstudios</a> |  
-                <a href="#" data-en="Homepage" data-sw="Ukurasa Mkuu">Homepage</a> |     
                 <a href="#" id="toolLink" data-en="The Tool" data-sw="Zana">The Tool</a> |   
-                <a href="#" id="feedbackLink" data-en="Feed Back" data-sw="Maoni">Feedback</a> |  
-                <a href="#" data-en="Donations" data-sw="Michango">Donations</a> |     
-                <a href="#" data-en="About" data-sw="Kuhusu">About</a>   
+                <a href="#" id="howToUseLink" data-en="How To Use" data-sw="Jinsi ya Kutumia">How To Use</a> |   
+                <a href="#" id="feedbackLink" data-en="Feed Back" data-sw="Maoni">Feedback</a> 
             </div>
             <!-- Top Right Action Controls -->
             <div class="top-controls">
@@ -32,9 +29,10 @@
         <div class="mycontainer">
             <!-- Left Text Box -->
             <div class="txt">
-                <h1 data-en="Project Title: Nairobi Waste Action" data-sw="Kichwa cha Mradi: Hatua za Taka za Nairobi">Project Title: Nairobi Waste Action</h1>
+                <h1 class="site-title" data-en="FAC" data-sw="FAC">FAC</h1>
+                <p class="site-caption" data-en="Find a Collector" data-sw="Tafuta Mkusanyaji">Find a Collector</p>
                 <p data-en="Residents living in densely populated areas (like Kibera) in Nairobi with non-existent or faulty garbage collection systems are struggling to safely manage and dispose of their daily household waste because public municipal collection services are severely inadequate, while formal private collection services remain financially out of reach for average households. Research evaluating solid waste infrastructure in Nairobi found that the city generates between 2,400 and 3,000 tons of waste daily, yet public and formal private services collect less than 45% of this total—leaving over 1,300 tons of unmanaged waste accumulating in residential estates every day, while 93% of formally collected waste is dumped untreated into landfills due to cost and infrastructure barriers. UNEP & NEMA—Solid Waste Strategy (2021); CET—Plastic Flow Assessment (2025). Residents therefore experience severe health and environmental hazards continuously but are forced to respond by burning trash along walkways or dumping waste into open drains rather than connecting with accessible, affordable collection solutions."
-                   data-sw="Wakazi wanaoishi katika maeneo yenye idadi kubwa ya watu (kama Kibera) jijini Nairobi walio na mifumo duni au isiyofanya kazi ya kukusanya taka wanatatizika kudhibiti na kutupa taka zao za kila siku salama kwa sababu huduma za umma za manispaa hazitoshi kabisa, huku huduma rasmi za kibinafsi zikisalia kuwa za gharama kubwa kwa familia za kawaida. Utafiti unaotathmini miundombinu ya taka ngumu jijini Nairobi ulibaini kuwa jiji hilo linazalisha kati ya tani 2,400 na 3,000 za taka kila siku, lakini huduma za umma na za kibinafsi zinakusanya chini ya 45% ya jumla hii—wakiacha zaidi ya tani 1,300 za taka zisizodhibitiwa zikilundikana katika mitaa ya makazi kila siku, huku 93% ya taka zilizokusanywa rasmi zikitupwa bila kushughulikiwa kwenye dampo kutokana na vikwazo vya gharama na miundombinu. UNEP & NEMA—Mkakati wa Taka Ngumu (2021); CET—Tathmini ya Mtiririko wa Plastiki (2025). Kwa hivyo, wakazi wanapata hatari kubwa za kiafya na kimazingira mfululizo lakini wanalazimika kujibu kwa kuchoma taka kando ya njia za পথ au kutupa taka kwenye mifereji ya wazi badala ya kuungana na suluhisho zinazopatikana na nafuu za ukusanyaji.">
+                   data-sw="Wakazi wanaoishi katika maeneo yenye idadi kubwa ya watu (kama Kibera) jijini Nairobi walio na mifumo duni au isiyofanya kazi ya kukusanya taka wanatatizika kudhibiti na kutupa taka zao za kila siku salama kwa sababu huduma za umma za manispaa hazitoshi kabisa, huku huduma rasmi za kibinafsi zikisalia kuwa za gharama kubwa kwa familia za kawaida. Utafiti unaotathmini miundombinu ya taka ngumu jijini Nairobi ulibaini kuwa jiji hilo linazalisha kati ya tani 2,400 na 3,000 za taka kila siku, lakini huduma za umma na za kibinafsi zinakusanya chini ya 45% ya jumla hii—wakiacha zaidi ya tani 1,300 za taka zisizodhibitiwa zikilundikana katika mitaa ya makazi kila siku, huku 93% ya taka zilizokusanywa rasmi zikitupwa bila kushughulikiwa kwenye dampo kutokana na vikwazo vya gharama na miundombinu. UNEP & NEMA—Mkakati wa Taka Ngumu (2021); CET—Tathmini ya Mtiririko wa Plastiki (2025). Kwa hivyo, wakazi wanapata hatari kubwa za kiafya na kimazingira mfululizo lakini wanalazimika kujibu kwa kuchoma taka kando ya njia za path au kutupa taka kwenye mifereji ya wazi badala ya kuungana na suluhisho zinazopatikana na nafuu za ukusanyaji.">
                     Residents living in densely populated areas (like Kibera) in Nairobi with non-existent or faulty garbage collection systems are struggling to safely manage and dispose of their daily household waste because public municipal collection services are severely inadequate, while formal private collection services remain financially out of reach for average households. Research evaluating solid waste infrastructure in Nairobi found that the city generates between 2,400 and 3,000 tons of waste daily, yet public and formal private services collect less than 45% of this total—leaving over 1,300 tons of unmanaged waste accumulating in residential estates every day, while 93% of formally collected waste is dumped untreated into landfills due to cost and infrastructure barriers. UNEP & NEMA—Solid Waste Strategy (2021); CET—Plastic Flow Assessment (2025). Residents therefore experience severe health and environmental hazards continuously but are forced to respond by burning trash along walkways or dumping waste into open drains rather than connecting with accessible, affordable collection solutions.
                 </p>
                 
@@ -54,11 +52,71 @@
 
         <div class="bottomBar">
             <span data-en="Copyright © 2026" data-sw="Haki miliki © 2026">Copyright © 2026</span> 
-            <strong>CLIMATE ACTION TOOL</strong> 
+            <strong>FAC</strong> 
             <span data-en="All rights reserved by" data-sw="Haki zote zimehifadhiwa na">All rights reserved by</span> 
             <strong>Roundstudios</strong>
         </div>
     </div>
+
+    <!-- How To Use Modal Dialog -->
+    <dialog id="howToUseDialog" class="collector-modal">
+        <div class="card">
+            <div class="modal-header-row">
+                <h1 data-en="How To Use" data-sw="Jinsi ya Kutumia">How To Use</h1>
+                <button type="button" id="closeHowToUseBtn" class="modal-close-btn">&times;</button>
+            </div>
+            
+            <div class="how-to-use-content">
+                <!-- Section 1: How To Use Tool -->
+                <h2 class="section-title" data-en="How To Use Tool" data-sw="Jinsi ya Kutumia Zana">How To Use Tool</h2>
+                <div class="image-pair">
+                    <img src="in1.jpg" alt="How to open tool">
+                    <img src="in2.jpg" alt="Collector Finder Tool interface">
+                </div>
+                <p class="feature-caption" 
+                   data-en="To open the tool, click 'The Tool' link on the top navigation bar. Once opened, you can search for a location in Nairobi using the search box or click anywhere directly on the map to find nearby garbage collection services and filter them by type." 
+                   data-sw="Ili kufungua zana, bonyeza kiungo cha 'Zana' kwenye mwambaa wa juu wa urambazaji. Ikishafunguka, unaweza kutafuta eneo jijini Nairobi kwa kutumia kisanduku cha kutafuta au kubonyeza popote kwenye ramani ili kupata huduma za ukusanyaji taka za karibu na kuzichuja kwa aina.">
+                    To open the tool, click 'The Tool' link on the top navigation bar. Once opened, you can search for a location in Nairobi using the search box or click anywhere directly on the map to find nearby garbage collection services and filter them by type.
+                </p>
+
+                <!-- Section 2: Additional Features -->
+                <h2 class="section-title" data-en="Additional Features" data-sw="Vipengele vya Ziada">Additional Features</h2>
+                
+                <!-- Theme Switch -->
+                <div class="image-pair">
+                    <img src="in3.jpg" alt="Dark Mode theme toggle">
+                    <img src="in4.jpg" alt="Light Mode theme toggle">
+                </div>
+                <p class="feature-caption" 
+                   data-en="You can switch between Dark Mode and Light Mode anytime by clicking the theme toggle button located at the top right corner of the website." 
+                   data-sw="Unaweza kubadilisha kati ya Njia Nyeusi (Dark Mode) na Njia Nyeupe (Light Mode) wakati wowote kwa kubonyeza kitufe cha mandhari kilicho kwenye pembe ya juu kulia ya tovuti.">
+                    You can switch between Dark Mode and Light Mode anytime by clicking the theme toggle button located at the top right corner of the website.
+                </p>
+
+                <!-- Language Switch -->
+                <div class="image-pair">
+                    <img src="in5.jpg" alt="Language toggle English">
+                    <img src="in6.jpg" alt="Language toggle Swahili">
+                </div>
+                <p class="feature-caption" 
+                   data-en="To change the website language, click the language switch button at the top right. This instantly translates all site content between English and Swahili." 
+                   data-sw="Ili kubadilisha lugha ya tovuti, bonyeza kitufe cha kubadilisha lugha kilicho juu kulia. Hii inatafsiri papo hapo maudhui yote ya tovuti kati ya Kiingereza na Kiswahili.">
+                    To change the website language, click the language switch button at the top right. This instantly translates all site content between English and Swahili.
+                </p>
+
+                <!-- Feedback Feature -->
+                <div class="image-pair">
+                    <img src="in7.jpg" alt="Feedback navigation link">
+                    <img src="in8.png" alt="Feedback dialog form">
+                </div>
+                <p class="feature-caption" 
+                   data-en="Click 'Feedback' on the top navigation bar to open the feedback pop-up. Type your comments or suggestions into the text box and click Submit to share your feedback." 
+                   data-sw="Bonyeza 'Maoni' kwenye mwambaa wa juu wa urambazaji ili kufungua dirisha la maoni. Andika maoni au mapendekezo yako kwenye kisanduku cha maandishi na ubonyeze Wasilisha ili kushiriki maoni yako.">
+                    Click 'Feedback' on the top navigation bar to open the feedback pop-up. Type your comments or suggestions into the text box and click Submit to share your feedback.
+                </p>
+            </div>
+        </div>
+    </dialog>
 
     <!-- Feedback Modal Dialog -->
     <dialog id="feedbackDialog" class="collector-modal">
@@ -69,9 +127,9 @@
             </div>
             <div class="feedback-content">
                 <p class="feedback-intro-text" 
-                   data-en="Please submit your feedback about this website. Your ideas and opinions are much appreciated. Help us improve this site with your suggestions. Thankyou 🙏🏿" 
-                   data-sw="Tafadhali wasilisha maoni yako kuhusu tovuti hii. Mawazo na maoni yako yanathaminiwa sana. Tusaidie kuboresha tovuti hii kwa mapendekezo yako. Asante 🙏🏿">
-                    Please submit your feedback about this website. Your ideas and opinions are much appreciated. Help us improve this site with your suggestions. Thankyou 🙏🏿
+                   data-en="Please submit your feedback about this website. Your ideas and opinions are much appreciated. Help us improve this site with your suggestions. Thankyou. " 
+                   data-sw="Tafadhali wasilisha maoni yako kuhusu tovuti hii. Mawazo na maoni yako yanathaminiwa sana. Tusaidie kuboresha tovuti hii kwa mapendekezo yako. Asante. ">
+                    Please submit your feedback about this website. Your ideas and opinions are much appreciated. Help us improve this site with your suggestions. Thankyou. 
                 </p>
                 <div class="field-group">
                     <textarea id="feedbackInput" placeholder="Enter Feed Back" rows="5"></textarea>
